@@ -10,8 +10,8 @@ module.exports = {
       },
       fontSize: {
         'side-card': '18px',
-        'track-title': '22px',
-        'track-author': '16px',
+        'track-name': '32px',
+        'track-author': '24px',
         'track-duration': '12px'
       }
     },
