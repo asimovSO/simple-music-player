@@ -1,5 +1,10 @@
 <template>
-    <div class="w-[262px] h-[262px] bg-gray-300">
-        <!-- <img src="" alt="" class="w-full bg-gray-500"> -->
+    <div class="w-[262px] h-[262px] ">
+        <img :src="img_src" alt="" class="w-full ">
     </div>
 </template>
+<script setup>
+defineProps({
+    img_src: String
+})
+</script>
