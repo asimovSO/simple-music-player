@@ -1,6 +1,16 @@
 <script setup>
+import { onMounted } from "vue";
 import Player from "./components/Player.vue";
 import TheSidebar from "./components/TheSidebar.vue";
+import { getAllTracks } from "./services/tracks";
+import { useTracksStore } from "./stores/useTracksStore";
+const store = useTracksStore()
+
+onMounted(() => {
+  store.loadTracks()
+  console.log(store.trackList);
+})
+
 </script>
 
 <template>

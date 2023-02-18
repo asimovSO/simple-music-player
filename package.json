@@ -8,6 +8,8 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "firebase": "^9.17.1",
+    "howler": "^2.2.3",
     "pinia": "^2.0.28",
     "vue": "^3.2.45"
   },
