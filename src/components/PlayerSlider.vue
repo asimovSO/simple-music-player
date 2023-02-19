@@ -36,12 +36,12 @@ const formatDuration = computed(() => {
       type="range"
       name=""
       id=""
-      class="w-[600px] h-[5px] slider-input"
+      class="w-[600px] h-[5px] slider-input bg-main-gray"
       step="0.1"
       v-model="store.position"
       min="0"
       :max="store.trackDuration"
-	  @change="store.seekTrack(store.position)"
+	  @change="store.seekTrack"
     />
     <span class="end-position w-5">{{ formatDuration }}</span>
   </div>
@@ -56,22 +56,20 @@ const formatDuration = computed(() => {
   background: #c2c2c2;
   outline: none;
   opacity: 0.7;
-  -webkit-transition: 0.2s;
-  transition: opacity 0.2s;
 }
 .slider-input::-webkit-slider-thumb {
   -webkit-appearance: none;
   appearance: none;
   width: 12px;
   height: 12px;
-  background: #d8a22e;
+  background: var(--primary-color);
   cursor: pointer;
   border-radius: 50%;
 }
 .slider-input::-moz-range-thumb {
   width: 12px;
   height: 12px;
-  background: #d8a22e;
+  background: var(--primary-color);
   cursor: pointer;
   border-radius: 50%;
 }

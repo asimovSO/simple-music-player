@@ -75,8 +75,8 @@ export const useTracksStore = defineStore("track", () => {
   }
 
 
-  function seekTrack(time){
-    currTrack.value.seek(time)
+  function seekTrack(){
+    currTrack.value.seek(position.value)
   }
 
   return {

@@ -14,7 +14,7 @@ onMounted(() => {
 </script>
 
 <template>
-  <main class="overflow-hidden">
+  <main class="overflow-hidden bg-bg text-white">
     <div class="flex h-screen">
       <TheSidebar />
       <div class=" flex-grow h-full justify-center items-center flex">
