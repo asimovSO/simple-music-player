@@ -8,6 +8,9 @@ export const useTracksStore = defineStore("track", () => {
   const currTrack = ref();
   const selectedTrack = ref(trackList.value[0]);
   const isPlaying = ref(false);
+  const trackDuration = ref()
+  const position = ref(0)
+  const timer = ref(null)
 
   async function loadTracks() {
     const response = await getAllTracks();
@@ -16,10 +19,25 @@ export const useTracksStore = defineStore("track", () => {
   }
 
   function setPlayCurrTrack(track) {
-    currTrack.value = new Howl({ src: track.src_audio, html5: true });
+    currTrack.value = new Howl({ src: track.src_audio, html5: true});
     selectedTrack.value = track;
     currTrack.value.play();
-    console.log(currTrack.value);
+    
+    currTrack.value.on('load', () => {
+      trackDuration.value = currTrack.value.duration()
+    })
+
+    currTrack.value.on('play', () => {
+      timer.value = setInterval(()=>{
+        position.value = currTrack.value.seek()
+      }, 1000)
+    })
+
+    currTrack.value.on('end', () => {
+      clearInterval(timer)
+      playNextTrack()
+      
+    })
   }
   function playCurrTrack(track) {
     currTrack.value.stop();
@@ -56,11 +74,18 @@ export const useTracksStore = defineStore("track", () => {
     playCurrTrack(selectedTrack.value);
   }
 
+
+  function seekTrack(time){
+    currTrack.value.seek(time)
+  }
+
   return {
     trackList,
     currTrack,
     loadTracks,
     selectedTrack,
+    position,
+    trackDuration,
     isPlaying,
     setPlayCurrTrack,
     playCurrTrack,
@@ -68,5 +93,6 @@ export const useTracksStore = defineStore("track", () => {
     pauseCurrTrack,
     playNextTrack,
     playPrevTrack,
+    seekTrack
   };
 });

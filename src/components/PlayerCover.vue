@@ -1,5 +1,5 @@
 <template>
-    <div class="w-[262px] h-[262px] ">
+    <div class="w-[300px] h-[300px] ">
         <img :src="img_src" alt="" class="w-full ">
     </div>
 </template>
